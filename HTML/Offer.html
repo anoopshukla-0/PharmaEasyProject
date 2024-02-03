@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Offer Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .offer-container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 300px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .offer-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .offer-details {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .offer-price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .offer-countdown {
+            font-size: 16px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+<div class="offer-container">
+    <img class="offer-image" src="https://via.placeholder.com/300x150" alt="Offer Image">
+    
+    <div class="offer-details">
+        <h2>Special Offer</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis.</p>
+    </div>
+
+    <div class="offer-price">
+        Price: $19.99
+    </div>
+
+    <div class="offer-countdown" id="countdown">
+        Time left: <span id="timer"></span>
+    </div>
+</div>
+
+<script>
+    // Set the date we're counting down to (in this example, 1 day from now)
+    const countDownDate = new Date().getTime() + 1 * 24 * 60 * 60 * 1000;
+
+    // Update the countdown every 1 second
+    const x = setInterval(function() {
+        // Get the current date and time
+        const now = new Date().getTime();
+
+        // Calculate the remaining time
+        const distance = countDownDate - now;
+
+        // Calculate days, hours, minutes, and seconds
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Display the countdown
+        document.getElementById("timer").innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+        // If the countdown is over, display a message
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("timer").innerHTML = "EXPIRED";
+        }
+    }, 1000);
+</script>
+
+</body>
+</html>
